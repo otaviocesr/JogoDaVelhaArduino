@@ -15,4 +15,4 @@ Programado para a possibilidade de vitória para o jogador1, jogador2 ou dê vel
 Executará os comandos e aparecerá o jogo no monitor serial.
 
 
-###### Feito por Otávio Cesar R. Cavalheiro
+###### Autor: Otávio Cesar R. Cavalheiro
