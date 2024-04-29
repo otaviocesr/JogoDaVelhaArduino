@@ -34,11 +34,11 @@ function principal2() {
     // Anotar/Registrar a jogada, do primeiro jogador
     velha = 1;
     do {
-        window.alert(tabuleiro[0].ToString() + tabuleiro[1] + tabuleiro[2]);
-        window.alert(tabuleiro[3].ToString() + tabuleiro[4] + tabuleiro[5]);
-        window.alert(tabuleiro[6].ToString() + tabuleiro[7] + tabuleiro[8]);
+        console.log(tabuleiro[0].ToString() + tabuleiro[1] + tabuleiro[2]);
+        console.log(tabuleiro[3].ToString() + tabuleiro[4] + tabuleiro[5]);
+        console.log(tabuleiro[6].ToString() + tabuleiro[7] + tabuleiro[8]);
         jogada = "";
-        window.alert("Digite a posição da sua peça jogador " + jogadorDavez);
+        console.log("Digite a posição da sua peça jogador " + jogadorDavez);
         jogada = window.prompt('Enter a value for jogada');
         if (varrerJogada(jogada) == true) {
 
@@ -61,12 +61,12 @@ function principal2() {
                 // Verificar a jogada vencedora nas linhas
                 velha = velha + 1;
             } else {
-                window.alert("Erro. Posição já ocupada, digite novamente outra posição");
+                console.log("Erro. Posição já ocupada, digite novamente outra posição");
 
                 // Informar ao Jogador 1 que a posição está preenchida, é inválida e ele precisa informar uma posição válida.
             }
         } else {
-            window.alert("JOGADA INVÁLIDA");
+            console.log("JOGADA INVÁLIDA");
         }
     } while (haVencedor == 0 && velha <= 9);
     if (jogadorDavez == 1) {
@@ -75,9 +75,9 @@ function principal2() {
         jogadorDavez = 1;
     }
     if (haVencedor == 1) {
-        window.alert("Parabéns, você ganhou jogador " + jogadorDavez);
+        console.log("Parabéns, você ganhou jogador " + jogadorDavez);
     } else {
-        window.alert("Deu Velha!");
+        console.log("Deu Velha!");
     }
 }
 
@@ -85,7 +85,7 @@ function varrerJogada(entrada) {
     var entradaValida;
 
     entradaValida = false;
-    window.alert(entrada.length());
+    console.log(entrada.length());
     if (entrada.length() == 3) {
         if (entrada.charAt(0) == "0" || entrada.charAt(0) == "1" || entrada.charAt(0) == "2") {
             if (entrada.charAt(2) == "0" || entrada.charAt(2) == "1" || entrada.charAt(2) == "2") {
