@@ -8,8 +8,12 @@ int matriz[3][3] = {
 { 0 , 0 , 0 },
 { 0 , 0 , 0 }
 };
+int contadordevelha = 0;
+int contadordevitoria1 = 0;
+int contadordevitoria2 = 0;
+int Partida = 1;
 // Declara e define a variável inteira velha como 1
-int velha = 1;
+int velha = 0;
 // Define a variável linha como inteiro
 int linha;
 // Define a variável coluna como inteiro
@@ -34,6 +38,7 @@ void ZerarTabuleiro(){
 
 // Cria uma função para chamar o jogador e imprimir o tabuleiro na serial
 void ChamarJogadorETabuleiro(){
+        Serial.println();
         Serial.print("Escolha a casa da sua jogada, jogador ");
         Serial.println(JogadorDaVez);
         Serial.println("");
@@ -60,6 +65,9 @@ ZerarTabuleiro();
   
 // Chama a função ChamarJogadorETabuleiro
 ChamarJogadorETabuleiro();
+  
+  Serial.print("Partida: ");
+  Serial.println(Partida);
 }
 
 void loop(){
@@ -68,7 +76,7 @@ void loop(){
 HaVencedor = false;
 
 // "Zera" a variável velha
-velha = 1;
+velha = 0;
  
 // Comando do...while verifica se há ganhador ou a jogada é inválida
 do {
@@ -98,9 +106,10 @@ do {
                       (jogada.indexOf("u") != -1) || (jogada.indexOf("v") != -1) || (jogada.indexOf("w") != -1) || (jogada.indexOf("x") != -1) ||
                       (jogada.indexOf("y") != -1) || (jogada.indexOf("z") != -1) || (jogada.indexOf("3") != -1) || (jogada.indexOf("4") != -1) || 
                       (jogada.indexOf("5") != -1) || (jogada.indexOf("6") != -1) || (jogada.indexOf("7") != -1) || (jogada.indexOf("8") != -1) || 
-                      (jogada.indexOf("9") != -1)) {
+                      (jogada.indexOf("9") != -1) || (jogada.indexOf("/") != -1)) {
                           Serial.println();
-                          Serial.println("Jogada invalida, jogue novamente");
+                          Serial.print("Jogada invalida, jogue novamente jogador ");
+                          Serial.println(JogadorDaVez);
                           Serial.println();
                           }else{
     linha = jogada.substring(0,1).toInt();
@@ -156,8 +165,8 @@ velha = velha + 1;
     }
   }
 
-} while (!HaVencedor && velha <= 9); 
-          if (velha >= 9){
+} while (!HaVencedor && velha < 9); 
+          if (velha > 9){
         mensagem = 2;
     }
 
@@ -166,13 +175,32 @@ velha = velha + 1;
         case 1:
         Serial.print("Parabens, Voce ganhou jogador ");
         Serial.println(JogadorDaVez);
+        Serial.println();
+       if (JogadorDaVez == 1){
+         contadordevitoria1++;
+         Serial.print("Quantidade de vitorias do jogador 1: ");
+         Serial.println(contadordevitoria1);
+         Serial.print("Quantidade de vitorias do jogador 2: ");
+         Serial.println(contadordevitoria2);
+       }else {
+         contadordevitoria2++;
+         Serial.print("Quantidade de vitorias do jogador 1: ");
+         Serial.println(contadordevitoria1);
+         Serial.print("Quantidade de vitorias do jogador 2: ");
+         Serial.println(contadordevitoria2);
+       }
         delay(TEMPO);
+        Serial.print("Quantidade de empates: ");
+        Serial.println(contadordevelha);
         Serial.println();
         Serial.println("Novo Jogo!");
         Serial.println();
         ZerarTabuleiro();
         JogadorDaVez = 1;
         ChamarJogadorETabuleiro();
+        Partida = Partida + 1;
+        Serial.print("Partida: ");
+        Serial.println(Partida);
         break;
 
         case 2:
@@ -181,9 +209,19 @@ velha = velha + 1;
         Serial.println();
         Serial.println("Novo Jogo!");
         Serial.println();
+        Serial.println(Partida);
         ZerarTabuleiro();
         JogadorDaVez = 1;
         ChamarJogadorETabuleiro();
+        contadordevelha = contadordevelha + 1;
+        Serial.print("Quantidade de empates: ");
+        Serial.println(contadordevelha);
+        Serial.print("Quantidade de vitorias do jogador 1: ");
+        Serial.println(contadordevitoria1);
+        Serial.print("Quantidade de vitorias do jogador 2: ");
+        Serial.println(contadordevitoria2);
+        Partida = Partida + 1;
+        Serial.print("Partida: ");
         break;
     }
 }
