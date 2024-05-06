@@ -1,4 +1,6 @@
+// Define SEPARADOR como 9 traços
 #define SEPARADOR "---------"
+// Define TEMPO como 2000
 #define TEMPO 2000
 //Declara uma matriz inteira 3x3, que simula um tabuleiro
 int matriz[3][3] = {
@@ -80,17 +82,24 @@ do {
               Serial.print("Jogada invalida, Jogue novamente jogador ");
               Serial.println(JogadorDaVez); 
                 }else{
-                   if((jogada.indexOf("-") || jogada.indexOf("+") || jogada.indexOf(",") || jogada.indexOf("!") || 
-                       jogada.indexOf("@") || jogada.indexOf("#") || jogada.indexOf("$") || jogada.indexOf("%") ||
-                       jogada.indexOf("¨") || jogada.indexOf("&") || jogada.indexOf("*") || jogada.indexOf("(") ||
-                       jogada.indexOf(")") || jogada.indexOf("¹") || jogada.indexOf("²") || jogada.indexOf("³") ||
-                       jogada.indexOf("£") || jogada.indexOf("¢") || jogada.indexOf("¬") || jogada.indexOf("§") ||
-                       jogada.indexOf("=") || jogada.indexOf("[") || jogada.indexOf("]") || jogada.indexOf("{") ||
-                       jogada.indexOf("}") || jogada.indexOf("ª") || jogada.indexOf("º") || jogada.indexOf(";") ||
-                       jogada.indexOf(":") || jogada.indexOf(".") || jogada.indexOf("<") || jogada.indexOf(">") ||
-                       jogada.indexOf("?") || jogada.indexOf("/") || jogada.indexOf("|") || jogada.indexOf("°") ||
-                       jogada.indexOf("´") || jogada.indexOf("`") || jogada.indexOf("^") || jogada.indexOf("~")) >= 0) {
+// Verifica se tem caracteres indesejados inserido pelo jogador
+                   if((jogada.indexOf("-") != -1) || (jogada.indexOf("+") != -1) || (jogada.indexOf(",") != -1) || (jogada.indexOf("!") != -1) ||
+                      (jogada.indexOf("@") != -1) || (jogada.indexOf("#") != -1) || (jogada.indexOf("$") != -1) || (jogada.indexOf("%") != -1) || 
+                      (jogada.indexOf("&") != -1) || (jogada.indexOf("*") != -1) || (jogada.indexOf("(") != -1) || (jogada.indexOf("§") != -1) ||
+                      (jogada.indexOf(")") != -1) || (jogada.indexOf("¢") != -1) || (jogada.indexOf("}") != -1) || (jogada.indexOf(";") != -1) ||  
+                      (jogada.indexOf("=") != -1) || (jogada.indexOf("[") != -1) || (jogada.indexOf("]") != -1) || (jogada.indexOf("{") != -1) || 
+                      (jogada.indexOf(":") != -1) || (jogada.indexOf(".") != -1) || (jogada.indexOf("<") != -1) || (jogada.indexOf(">") != -1) ||
+                      (jogada.indexOf("`") != -1) || (jogada.indexOf("^") != -1) || (jogada.indexOf("~") != -1) || (jogada.indexOf("'") != -1) ||
+                      (jogada.indexOf("a") != -1) || (jogada.indexOf("b") != -1) || (jogada.indexOf("c") != -1) || (jogada.indexOf("d") != -1) ||
+                      (jogada.indexOf("e") != -1) || (jogada.indexOf("f") != -1) || (jogada.indexOf("g") != -1) || (jogada.indexOf("h") != -1) ||
+                      (jogada.indexOf("i") != -1) || (jogada.indexOf("j") != -1) || (jogada.indexOf("k") != -1) || (jogada.indexOf("l") != -1) ||
+                      (jogada.indexOf("m") != -1) || (jogada.indexOf("n") != -1) || (jogada.indexOf("o") != -1) || (jogada.indexOf("p") != -1) ||
+                      (jogada.indexOf("q") != -1) || (jogada.indexOf("r") != -1) || (jogada.indexOf("s") != -1) || (jogada.indexOf("t") != -1) ||
+                      (jogada.indexOf("u") != -1) || (jogada.indexOf("v") != -1) || (jogada.indexOf("w") != -1) || (jogada.indexOf("x") != -1) ||
+                      (jogada.indexOf("y") != -1) || (jogada.indexOf("z") != -1)) {
+                          Serial.println();
                           Serial.println("Jogada invalida, jogue novamente");
+                          Serial.println();
                           }else{
     linha = jogada.substring(0,1).toInt();
     coluna = jogada.substring(2,3).toInt();
