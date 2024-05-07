@@ -104,9 +104,9 @@ do {
                       (jogada.indexOf("m") != -1) || (jogada.indexOf("n") != -1) || (jogada.indexOf("o") != -1) || (jogada.indexOf("p") != -1) ||
                       (jogada.indexOf("q") != -1) || (jogada.indexOf("r") != -1) || (jogada.indexOf("s") != -1) || (jogada.indexOf("t") != -1) ||
                       (jogada.indexOf("u") != -1) || (jogada.indexOf("v") != -1) || (jogada.indexOf("w") != -1) || (jogada.indexOf("x") != -1) ||
-                      (jogada.indexOf("y") != -1) || (jogada.indexOf("z") != -1) || (jogada.indexOf("3") != -1) || (jogada.indexOf("4") != -1) || 
-                      (jogada.indexOf("5") != -1) || (jogada.indexOf("6") != -1) || (jogada.indexOf("7") != -1) || (jogada.indexOf("8") != -1) || 
-                      (jogada.indexOf("9") != -1) || (jogada.indexOf("/") != -1)) {
+                      (jogada.indexOf("y") != -1) || (jogada.indexOf("z") != -1) || (jogada.indexOf("ç") != -1) || (jogada.indexOf("3") != -1) || 
+                      (jogada.indexOf("4") != -1) || (jogada.indexOf("5") != -1) || (jogada.indexOf("6") != -1) || (jogada.indexOf("7") != -1) || 
+                      (jogada.indexOf("8") != -1) || (jogada.indexOf("9") != -1) || (jogada.indexOf("/") != -1)) {
                           Serial.println();
                           Serial.print("Jogada invalida, jogue novamente jogador ");
                           Serial.println(JogadorDaVez);
@@ -166,62 +166,58 @@ velha = velha + 1;
   }
 
 } while (!HaVencedor && velha < 9); 
-          if (velha > 9){
+          if (!HaVencedor){
         mensagem = 2;
     }
 
 // Se a condição "mensagem" for igual a um, executará o Case 1, caso seja igual a 2, executará os comandos do Case 2
      switch (mensagem){
         case 1:
-        Serial.print("Parabens, Voce ganhou jogador ");
-        Serial.println(JogadorDaVez);
-        Serial.println();
+        Partida++;
        if (JogadorDaVez == 1){
          contadordevitoria1++;
-         Serial.print("Quantidade de vitorias do jogador 1: ");
-         Serial.println(contadordevitoria1);
-         Serial.print("Quantidade de vitorias do jogador 2: ");
-         Serial.println(contadordevitoria2);
        }else {
          contadordevitoria2++;
-         Serial.print("Quantidade de vitorias do jogador 1: ");
-         Serial.println(contadordevitoria1);
-         Serial.print("Quantidade de vitorias do jogador 2: ");
-         Serial.println(contadordevitoria2);
        }
+        Serial.print("Parabens, voce ganhou jogador ");
+        Serial.println(JogadorDaVez);
+        Serial.println();
         delay(TEMPO);
         Serial.print("Quantidade de empates: ");
         Serial.println(contadordevelha);
+        Serial.print("Partidas ganhas do jogador 1: ");
+        Serial.println(contadordevitoria1);
+        Serial.print("Partidas ganhas do jogador 2: ");
+        Serial.println(contadordevitoria2);
         Serial.println();
         Serial.println("Novo Jogo!");
         Serial.println();
+        Serial.print("Partida: ");
+        Serial.println(Partida);
         ZerarTabuleiro();
         JogadorDaVez = 1;
         ChamarJogadorETabuleiro();
-        Partida = Partida + 1;
-        Serial.print("Partida: ");
-        Serial.println(Partida);
         break;
 
         case 2:
+        Partida++;
+        contadordevelha++;
         Serial.println("DEU VELHA!");
         delay(TEMPO);
         Serial.println();
         Serial.println("Novo Jogo!");
         Serial.println();
-        Serial.println(Partida);
-        ZerarTabuleiro();
-        JogadorDaVez = 1;
-        ChamarJogadorETabuleiro();
-        contadordevelha = contadordevelha + 1;
         Serial.print("Quantidade de empates: ");
         Serial.println(contadordevelha);
         Serial.print("Quantidade de vitorias do jogador 1: ");
         Serial.println(contadordevitoria1);
         Serial.print("Quantidade de vitorias do jogador 2: ");
         Serial.println(contadordevitoria2);
-        Partida = Partida + 1;
         Serial.print("Partida: ");
+        Serial.println(Partida);
+        ZerarTabuleiro();
+        JogadorDaVez = 1;
+        ChamarJogadorETabuleiro();
         break;
     }
 }
