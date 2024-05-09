@@ -8,9 +8,13 @@ int matriz[3][3] = {
   { 0, 0, 0 },
   { 0, 0, 0 }
 };
+// Declara e define a variável inteira contadordevelha como 0
 int contadordevelha = 0;
+// Declara e define a variável inteia contadordevitoria1 como 0
 int contadordevitoria1 = 0;
+// Declara e define a variável inteira contadordevitoria2 como 0
 int contadordevitoria2 = 0;
+// Declara e define a variável inteira Partida como 1
 int Partida = 1;
 // Declara e define a variável inteira velha como 1
 int velha = 0;
