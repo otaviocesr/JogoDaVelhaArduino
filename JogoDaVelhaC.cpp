@@ -8,13 +8,9 @@ int matriz[3][3] = {
   { 0, 0, 0 },
   { 0, 0, 0 }
 };
-// Declara e define a variável inteira contadordevelha como 0
 int contadordevelha = 0;
-// Declara e define a variável inteia contadordevitoria1 como 0
 int contadordevitoria1 = 0;
-// Declara e define a variável inteira contadordevitoria2 como 0
 int contadordevitoria2 = 0;
-// Declara e define a variável inteira Partida como 1
 int Partida = 1;
 // Declara e define a variável inteira velha como 1
 int velha = 0;
@@ -94,7 +90,7 @@ void loop() {
         Serial.print("Jogada invalida, Jogue novamente jogador ");
         Serial.println(JogadorDaVez);
       } else if (jogada.substring(1, 2) != " ") {
-        Serial.print("Jogada Invalida, jogue novamente jogador ");
+        Serial.print("Jogada invalida, Jogue novamente jogador ");
         Serial.println(JogadorDaVez);
       } else {
         // Verifica se tem caracteres indesejados inserido pelo jogador
@@ -112,9 +108,8 @@ void loop() {
             (jogada.indexOf("3") != -1) || (jogada.indexOf("4") != -1) || (jogada.indexOf("5") != -1) || (jogada.indexOf("6") != -1) || (jogada.indexOf("7") != -1) || 
             (jogada.indexOf("8") != -1) || (jogada.indexOf("9") != -1) || (jogada.indexOf("/") != -1)) {
           Serial.println();
-          Serial.print("Jogada invalida, jogue novamente jogador ");
+          Serial.print("Jogada invalida, Jogue novamente jogador ");
           Serial.println(JogadorDaVez);
-          Serial.println();
         } else {
           linha = jogada.substring(0, 1).toInt();
           coluna = jogada.substring(2, 3).toInt();
@@ -136,18 +131,14 @@ void loop() {
             // Executa o comando de verificação de vencedores na matriz, em linhas, colunas e diagonais, respectivamente
             if ((matriz[0][0] == JogadorDaVez && matriz[0][1] == JogadorDaVez && matriz[0][2] == JogadorDaVez) || 
                 (matriz[1][0] == JogadorDaVez && matriz[1][1] == JogadorDaVez && matriz[1][2] == JogadorDaVez) || 
-                (matriz[2][0] == JogadorDaVez && matriz[2][1] == JogadorDaVez && matriz[2][2] == JogadorDaVez)) {
+                (matriz[2][0] == JogadorDaVez && matriz[2][1] == JogadorDaVez && matriz[2][2] == JogadorDaVez) ||
+                (matriz[0][0] == JogadorDaVez && matriz[1][0] == JogadorDaVez && matriz[2][0] == JogadorDaVez) || 
+                (matriz[0][1] == JogadorDaVez && matriz[1][1] == JogadorDaVez && matriz[2][1] == JogadorDaVez) || 
+                (matriz[0][2] == JogadorDaVez && matriz[1][2] == JogadorDaVez && matriz[2][2] == JogadorDaVez) ||  
+                (matriz[0][0] == JogadorDaVez && matriz[1][1] == JogadorDaVez && matriz[2][2] == JogadorDaVez) || 
+                (matriz[0][2] == JogadorDaVez && matriz[1][1] == JogadorDaVez && matriz[2][0] == JogadorDaVez)){
                  HaVencedor = true;
                  mensagem = 1;
-            } else if ((matriz[0][0] == JogadorDaVez && matriz[1][0] == JogadorDaVez && matriz[2][0] == JogadorDaVez) || 
-                       (matriz[0][1] == JogadorDaVez && matriz[1][1] == JogadorDaVez && matriz[2][1] == JogadorDaVez) || 
-                       (matriz[0][2] == JogadorDaVez && matriz[1][2] == JogadorDaVez && matriz[2][2] == JogadorDaVez)) {
-                        HaVencedor = true;
-                        mensagem = 1;
-            } else if ((matriz[0][0] == JogadorDaVez && matriz[1][1] == JogadorDaVez && matriz[2][2] == JogadorDaVez) || 
-                       (matriz[0][2] == JogadorDaVez && matriz[1][1] == JogadorDaVez && matriz[2][0] == JogadorDaVez)) {
-                        HaVencedor = true;
-                        mensagem = 1;
             } else if (JogadorDaVez == 1) {
               JogadorDaVez = 2;
             } else {
@@ -159,7 +150,7 @@ void loop() {
 
             // Caso a condição verificação acima for falsa, executará o else
           } else {
-            Serial.print("Jogada Invalida!, Jogue novamente jogador ");
+            Serial.print("Jogada invalida, Jogue novamente jogador ");
             Serial.println(JogadorDaVez);
           }
 
